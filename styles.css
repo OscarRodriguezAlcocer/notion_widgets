@@ -1,42 +1,28 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-}
-
-.hex-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.row {
-    display: flex;
-    justify-content: center;
-}
-
-.hex {
-    width: 50px;
-    height: 58px;
-    background-color: #3498db;
+.hexagon {
+    width: 100px;
+    height: 60.5px; /* Calculado para mantener la relación de aspecto de un hexágono */
+    background-color: #ff5733; /* Cambia el color de fondo según tus preferencias */
     position: relative;
-    margin: 2px;
+    margin: 57.75px 0; /* La mitad de la altura para centrarlo verticalmente */
 }
 
-.hex:before,
-.hex:after {
+.hexagon::before,
+.hexagon::after {
     content: '';
     position: absolute;
     width: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
 }
 
-.hex:before {
-    top: -29px;
-    border-bottom: 29px solid #3498db;
+.hexagon::before {
+    top: -27.9px; /* Calculado para crear la parte superior del hexágono */
+    border-bottom: 28.9px solid #ff5733; /* Cambia el color para que coincida con el fondo */
+}
+
+.hexagon::after {
+    bottom: -27.9px; /* Calculado para crear la parte inferior del hexágono */
+    border-top: 28.9px solid #ff5733; /* Cambia el color para que coincida con el fondo */
 }
 
 .hex:after {
