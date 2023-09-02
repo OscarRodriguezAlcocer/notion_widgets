@@ -29,3 +29,6 @@
     bottom: -29px;
     border-top: 29px solid #3498db;
 }
+.mi-elemento {
+    white-space: collapse;
+}
