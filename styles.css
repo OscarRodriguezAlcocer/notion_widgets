@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.composicion, .disponibles {
+    flex-basis: 45%;
+}
+
+.campeones {
+    list-style-type: none;
+    padding: 0;
+}
+
+.campeon, .campeon-disponible {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    background-color: #f7f7f7;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
