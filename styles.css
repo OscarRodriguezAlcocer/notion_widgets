@@ -1,37 +1,44 @@
 body {
-    font-family: Arial, sans-serif;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
-main {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.composicion, .disponibles {
-    flex-basis: 45%;
+.tablero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.campeones {
-    list-style-type: none;
-    padding: 0;
+.fila {
+    display: flex;
 }
 
-.campeon, .campeon-disponible {
-    padding: 5px;
-    border: 1px solid #ccc;
+.hexagon {
+    width: 80px;
+    height: 92px;
+    background-color: #3498db;
+    position: relative;
     margin: 5px;
-    background-color: #f7f7f7;
 }
 
-footer {
-    text-align: center;
-    margin-top: 20px;
+.hexagon:before,
+.hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+}
+
+.hexagon:before {
+    top: -23px;
+    border-bottom: 23px solid #3498db;
+}
+
+.hexagon:after {
+    bottom: -23px;
+    border-top: 23px solid #3498db;
 }
