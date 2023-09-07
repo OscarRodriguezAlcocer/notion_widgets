@@ -2,7 +2,7 @@
 const campeones = [
   { nombre: "Aatrox", sinergias: ["Darkin", "Coloso", "Fulminador"] },
   { nombre: "Heimerdinger", sinergias: ["Piltover", "Tecnogenio", "Yordle"] },
-  { nombre: "Senna", sinergias: ["Artillero", "Redentor", "Isla de la Sombra"] },
+  { nombre: "Senna", sinergias: ["Artillero", "Redentor", "Isla de la Sombra"]},
   { nombre: "K'Sante", sinergias: ["Bastion", "Shurima"] },
   { nombre: "Sion", sinergias: ["Maton", "Noxus"] },
   { nombre: "Ryze", sinergias: ["Viajero", "Invocador"] },
@@ -74,65 +74,75 @@ function contarCampeones(composicion) {
 }
 
 function generarComposicion() {
-    const campeonInput = document.getElementById("campeonInput");
-    const campeonesIngresados = campeonInput.value.split(",").map(campeon => campeon.trim());
+  const campeonInput = document.getElementById("campeonInput");
+  const campeonesIngresados = campeonInput.value
+    .split(",")
+    .map((campeon) => campeon.trim());
 
-    // Filtra los campeones ingresados para asegurarse de que sean válidos
-    const campeonesValidos = campeones.filter(campeon => campeonesIngresados.includes(campeon.nombre));
+  // Filtra los campeones ingresados para asegurarse de que sean válidos
+  const campeonesValidos = campeones.filter((campeon) =>
+    campeonesIngresados.includes(campeon.nombre)
+  );
 
-    // Si no se encontraron campeones válidos, muestra un mensaje de error
-    if (campeonesValidos.length === 0) {
-        const compositionContainer = document.getElementById("composition");
-        compositionContainer.innerHTML = '<p><strong>Composición:</strong> No se encontraron campeones válidos.</p>';
-        return;
-    }
-
-    const composicion = [];
-    const sinergiasActivas = {};
-
-    // Hacer una copia de los campeones válidos para seleccionar sin modificar la lista original
-    const campeonesDisponibles = [...campeonesValidos];
-
-    // Seleccionar aleatoriamente campeones sin repetir
-    for (let i = 0; i < 9 && campeonesDisponibles.length > 0; i++) {
-        const indexAleatorio = Math.floor(Math.random() * campeonesDisponibles.length);
-        const campeonAleatorio = campeonesDisponibles.splice(indexAleatorio, 1)[0];
-        composicion.push(campeonAleatorio);
-
-        // Registra las sinergias activas de este campeón
-        const contadorCampeonesEnComposicion = contarCampeones(composicion);
-        campeonAleatorio.sinergias.forEach((sinergia) => {
-            if (!sinergiasActivas[sinergia]) {
-                sinergiasActivas[sinergia] = 0;
-            }
-
-            // Suma la cantidad de campeones con la misma sinergia
-            sinergiasActivas[sinergia] +=
-                contadorCampeonesEnComposicion[campeonAleatorio.nombre];
-        });
-    }
-
-    // Muestra la composición y sinergias activas
+  // Si no se encontraron campeones válidos, muestra un mensaje de error
+  if (campeonesValidos.length === 0) {
     const compositionContainer = document.getElementById("composition");
-    compositionContainer.innerHTML = `
+    compositionContainer.innerHTML =
+      "<p><strong>Composición:</strong> No se encontraron campeones válidos.</p>";
+    return;
+  }
+
+  const composicion = [];
+  const sinergiasActivas = {};
+
+  // Hacer una copia de los campeones válidos para seleccionar sin modificar la lista original
+  const campeonesDisponibles = [...campeonesValidos];
+
+  // Seleccionar aleatoriamente campeones sin repetir
+  for (let i = 0; i < 9 && campeonesDisponibles.length > 0; i++) {
+    const indexAleatorio = Math.floor(
+      Math.random() * campeonesDisponibles.length
+    );
+    const campeonAleatorio = campeonesDisponibles.splice(indexAleatorio, 1)[0];
+    composicion.push(campeonAleatorio);
+
+    // Registra las sinergias activas de este campeón
+    const contadorCampeonesEnComposicion = contarCampeones(composicion);
+    campeonAleatorio.sinergias.forEach((sinergia) => {
+      if (!sinergiasActivas[sinergia]) {
+        sinergiasActivas[sinergia] = 0;
+      }
+
+      // Suma la cantidad de campeones con la misma sinergia
+      sinergiasActivas[sinergia] +=
+        contadorCampeonesEnComposicion[campeonAleatorio.nombre];
+    });
+  }
+  // Ordenar las sinergias activas por cantidad de campeones de mayor a menor
+  const sinergiasOrdenadas = Object.keys(sinergiasActivas).sort((a, b) => {
+    return sinergiasActivas[b] - sinergiasActivas[a];
+  });
+
+  // Muestra la composición y sinergias activas
+  const compositionContainer = document.getElementById("composition");
+  compositionContainer.innerHTML = `
         <p><strong>Composición:</strong></p>
-        <ul>
+        <ul class= "navega">
             ${composicion
-                .map((campeon) => `<li>${campeon.nombre}</li>`)
-                .join("")}
+              .map((campeon) => `<li>${campeon.nombre}</li>`)
+              .join("")}
         </ul>
         <p><strong>Sinergias Activas:</strong></p>
-        <ul>
-            ${Object.keys(sinergiasActivas)
-                .map((sinergia) => {
-                    return `<li><img src="img/sinergias/${sinergia}.png" alt="${sinergia}" class="sinergia-img">
+        <ul class= "navega">
+            ${sinergiasOrdenadas
+              .map((sinergia) => {
+                return `<li><img src="img/sinergias/${sinergia}.png" alt="${sinergia}" class="sinergia-img">
                     ${sinergiasActivas[sinergia]}</li>`;
-                })
-                .join("")}
+              })
+              .join("")}
         </ul>
     `;
 }
-
 
 // Asigna la función al botón de generación
 const generateButton = document.getElementById("generateButton");
