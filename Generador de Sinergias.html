@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Composiciones TFT</title>
+    <!-- Incluye los estilos de Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilo para mostrar las sinergias horizontalmente */
+        .sinergia {
+            display: inline-block;
+            margin-right: 100px;
+        }
+        .sinergia img {
+            max-width: 500px;
+            max-height: 500px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Generador de Composiciones TFT</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Formulario de entrada para los campeones -->
+                <div class="form-group">
+                    <label for="campeonInput">Ingresa los campeones (separados por comas):</label>
+                    <input type="text" class="form-control" id="campeonInput" placeholder="Ejemplo: Aatrox, Heimerdinger, Senna">
+                </div>
+                <button class="btn btn-primary" id="generateButton">Generar Composición</button>
+            </div>
+            <div class="col-md-6">
+                <!-- Muestra la composición y sinergias activas -->
+                <div id="composition">
+                    <!-- Los resultados se mostrarán aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluye la librería de Bootstrap JavaScript (jQuery y Popper.js requeridos) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
