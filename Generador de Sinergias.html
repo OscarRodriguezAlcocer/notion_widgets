@@ -22,42 +22,41 @@
       }
     </style>
   </head>
-  <body>
-    <div class="p-3 mb-2 bg-dark text-white">
-      <div class="container mt-5">
-        <h1 class="mb-4">Generador de Composiciones TFT</h1>
-        <div class="row">
-          <div class="col-md-6">
-            <!-- Formulario de entrada para los campeones -->
-            <div class="form-group">
-              <label for="campeonInput"
-                >Ingresa los campeones (separados por comas):</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="campeonInput"
-                placeholder="Ejemplo: Aatrox, Heimerdinger, Senna"
-              />
-            </div>
-            <button class="btn btn-primary" id="generateButton">
-              Generar Composición
-            </button>
+  <body class="bg-dark text-white">
+    <div class="container mt-5">
+      <h1 class="mb-4">Generador de Composiciones TFT</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Formulario de entrada para los campeones -->
+          <div class="form-group">
+            <label for="campeonInput"
+              >Ingresa los campeones (separados por comas):</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="campeonInput"
+              placeholder="Ejemplo: Aatrox, Heimerdinger, Senna"
+            />
           </div>
-          <div class="col-md-6">
-            <!-- Muestra la composición y sinergias activas -->
-            <div id="composition">
-              <!-- Los resultados se mostrarán aquí -->
-            </div>
+          <button class="btn btn-primary" id="generateButton">
+            Generar Composición
+          </button>
+        </div>
+        <div class="col-md-6">
+          <!-- Muestra la composición y sinergias activas -->
+          <div id="composition">
+            <!-- Los resultados se mostrarán aquí -->
           </div>
         </div>
       </div>
-
-      <!-- Incluye la librería de Bootstrap JavaScript (jQuery y Popper.js requeridos) -->
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <script src="index.js"></script>
     </div>
+
+    <!-- Incluye la librería de Bootstrap JavaScript (jQuery y Popper.js requeridos) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-NJp7F+0W5pNuouyt7jF5nF6pZsA5tk7FIaTRf5vc5z9jO0L3d4BpP2D9F2K5L5L5L5L5" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
   </body>
 </html>
