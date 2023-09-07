@@ -1,0 +1,13 @@
+.sinergia {
+    display: inline-block;
+    margin-right: 100px;
+  }
+  .sinergia img {
+    max-width: 500px;
+    max-height: 500px;
+    vertical-align: middle;
+  }
+  ul.navega li {
+    display: inline;
+    padding-right: 0.5em;
+  }
